@@ -1,29 +1,10 @@
 import 'package:creating_quiz/screenquiz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+class ResultScreen extends StatelessWidget {
 
-void main() {
-  runApp(
-    App()
-  );
-}
-
-class App extends StatelessWidget {
-  
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: "ProductSans"
-      ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
+  final int score;
+  ResultScreen({this.score});
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -48,10 +29,17 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Text(
-                "Quiz",
+                "RESULT",
                 style: TextStyle(
-                  color: Color(0xFFA20CBE),
-                  fontSize: 90
+                  color: Colors.white,
+                  fontSize: 35
+                ),
+              ),
+              Text(
+                "$score/10",
+                style: TextStyle(
+                  color: Color(0xFFFFBA00),
+                  fontSize: 60
                 ),
               ),
               Container(
@@ -70,13 +58,39 @@ class HomePage extends StatelessWidget {
                     )
                   },
                   child: Text(
-                    "Play",
+                    "TRY AGAIN",
                     style: TextStyle(
                       fontSize: 33,
 
                       ),
                   ),
                   color: Color(0xFFFFBA00),
+                  textColor: Colors.white
+
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 35,
+                  vertical: 30
+                ),
+                child: RaisedButton(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 20
+                  ),
+                  onPressed: ()=>{
+                    Navigator.pop(context)
+                  },
+                  child: Text(
+                    "EXIT",
+                    style: TextStyle(
+                      fontSize: 33,
+
+                      ),
+                  ),
+                  color: Color(0xFF511AA8),
                   textColor: Colors.white
 
                 ),
@@ -88,3 +102,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
